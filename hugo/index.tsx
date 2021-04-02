@@ -8,9 +8,9 @@ export function Hugo() {
   const screen = useScreen()
   const rem = useRem()
 
-  const viewComponent = useBreakpointValue<ReactElement>({
+  const viewComponent = useBreakpointValue({
     lg: <View style={{ flex: 1, backgroundColor: '#ccc' }} />,
-    base: <View style={{ flex: 1, backgroundColor: '#f00' }} />
+    base: <View style={{ flex: 1, backgroundColor: '#f00' }} />,
   })
 
   const isIPad = useMediaQuery({

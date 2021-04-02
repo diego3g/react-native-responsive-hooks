@@ -1,7 +1,12 @@
-import { BreakpointValuesWithBase, getNearestBreakpointValue } from '../utils/getNearestBreakpointValue';
+import { BreakpointSize } from '../ScreenProvider';
+import { getNearestBreakpointValue } from '../utils/getNearestBreakpointValue';
 import { useScreen } from './useScreen';
 
-export function useBreakpointValue<T = unknown>(values: BreakpointValuesWithBase<T>): T | undefined {
+type BreakpointValues = {
+  [key in BreakpointSize]?: any;
+} & { base: any };
+
+export function useBreakpointValue<T extends BreakpointValues>(values: T): T[keyof T] {
   const { breakpoint } = useScreen()
   
   return getNearestBreakpointValue({
@@ -9,3 +14,4 @@ export function useBreakpointValue<T = unknown>(values: BreakpointValuesWithBase
     values,
   })
 }
+
