@@ -1,13 +1,9 @@
 import { getNearestBreakpoint } from "./getNearestBreakpoint";
 import { BreakpointSize } from "../ScreenProvider";
 
-type BreakpointValues<T> = {
-  [Property in BreakpointSize]?: T;
-}
+type BreakpointValues<T> = Record<BreakpointSize, T>;
 
-export type BreakpointValuesWithBase<T> = {
-  base?: T;
-} & BreakpointValues<T>;
+export type BreakpointValuesWithBase<T> = BreakpointValues<T> & { base?: T };
 
 type GetNearestBreakpointValueParams<T> = {
   values: BreakpointValuesWithBase<T>
